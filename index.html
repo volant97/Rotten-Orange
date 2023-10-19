@@ -10,28 +10,30 @@
 
 <body>
     <header>
-        <h1 id="header">Hello World</h1>
+        <h1 class="header">Hello World</h1>
     </header>
     <section>
-        <form id="search_area">
-            <input id="searchInput" type="text" placeholder="영화 제목을 입력해 주세요." required/>
-            <button id="searchBtn">검색</button>
+        <form class="search_area">
+            <input class="searchInput" type="text" placeholder="영화 제목을 입력해 주세요." autocomplete="off" required />
+            <button class="searchBtn">검색</button>
         </form>
     </section>
     <main>
-        <form id="movie_area">
-            <div id="movieCard">
-                <div id="movieImage">
-                    <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"/>
-                </div>
-                <div id="movieName">
-                    <p>The Godfather</p>
-                </div>
-                <div id="movieExplanation">
-                    <p>movieExplanation</p>
-                </div>
-                <div id="movieGrade">
-                    <p>Rating : 8.7</p>
+        <form class="movie_area">
+            <div class="movieCardList">
+                <div class="movieCard">
+                    <div class="movieImage">
+                        <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" />
+                    </div>
+                    <div class="movieName">
+                        <p>The Godfather</p>
+                    </div>
+                    <div class="movieExplanation">
+                        <p>movieExplanation</p>
+                    </div>
+                    <div class="movieGrade">
+                        <p>Rating : 8.7</p>
+                    </div>
                 </div>
             </div>
         </form>
