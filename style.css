@@ -1,0 +1,64 @@
+/* 헤더 */
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+/* 검색 */
+.search_area {
+    display: flex;
+    justify-content: center;
+}
+
+/* 메인 */
+.movie_area {
+    margin: 0px 10%;
+}
+
+/* 영화 카드 리스트 */
+.movieCardList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+}
+
+.movieCard {
+    width: 250px;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    background-color: rgb(113, 170, 255);
+    border-radius: 20px 20px 10px 10px;
+    border: 0;
+    margin-bottom: 50px;
+    cursor: pointer;
+    ;
+}
+
+.movieCard:hover {
+    transform: scale(1.03);
+    transition: all 0.5s ease-in-out;
+}
+
+.movieImage {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.movieImage>img {
+    width: 150px;
+    border-radius: 15px;
+    /* margin-left: 23px; */
+}
+
+.movieExplanation {
+    font-size: 50%;
+}
+
+.movieName {
+    width: 100%;
+    text-align: center;
+}
