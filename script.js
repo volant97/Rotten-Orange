@@ -10,11 +10,6 @@ const searchWord = searchInput.value.toLowerCase();
 
 
 
-// test
-header.innerHTML = "영화 검색 사이트 만들기";
-
-
-
 // TMDB API
 const options = {
 	method: 'GET',
@@ -25,7 +20,6 @@ const options = {
 };
 const API_URL = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
-
 
 
 
@@ -55,14 +49,14 @@ function fetchThen(data) {
 				<p>${_overview}</p>
 			</div>
 			<div class="movieGrade">
-				<p>Rating: ${_vote_average}</p>
+				<p>Rating : ${_vote_average}</p>
 			</div>
 		</div>`;
 
 		movieCardList.insertAdjacentHTML("beforeend", temp_html);
 	})
 
-	// 영화 카드 클릭 시 ID 띄우기
+	// 영화 카드 클릭 시 ID 띄우기(초기 화면)
 	const movieCards = document.querySelectorAll(".movieCard");
 	movieCards.forEach(card => {
 		card.addEventListener("click", function () {
@@ -77,7 +71,7 @@ function fetchThen(data) {
 		searchInput.value = "";
 
 		// tset
-		console.log(searchWord);
+		// console.log(searchWord);
 
 		// 데이터를 배열로 가져오고 title을 소문자로 변환
 		let title_list = _results.map((item) => {
@@ -113,45 +107,43 @@ function fetchThen(data) {
 			// alert("검색 결과 있음");
 			// 채워넣기
 			match_movie.forEach((result) => {
-				const title = result['title'];
+				const id = result['id'];
 				const overview = result['overview'];
+				const title = result['title'];
 				const posterPath = result['poster_path'];
 				const voteAverage = result['vote_average'];
-				const id = result['id'];
 
 				const temp_html = `
-			<div data-id="${id} "class="movieCard">
-				<div class="movieImage">
-					<img src="${IMAGE_BASE_URL}${posterPath}"/>
-				</div>
-				<div class="movieName">
-					<h3>${title}</h3>
-				</div>
-				<div class="movieExplanation">
-					<p>${overview}</p>
-				</div>
-				<div class="movieGrade">
-					<p>Rating: ${voteAverage}</p>
-				</div>
-			</div>`;
+				<div data-id="${id} "class="movieCard">
+					<div class="movieImage">
+						<img src="${IMAGE_BASE_URL}${posterPath}"/>
+					</div>
+					<div class="movieName">
+						<h3>${title}</h3>
+					</div>
+					<div class="movieExplanation">
+						<p>${overview}</p>
+					</div>
+					<div class="movieGrade">
+						<p>Rating : ${voteAverage}</p>
+					</div>
+				</div>`;
 
 				movieCardList.insertAdjacentHTML('beforeend', temp_html);
+
+				// 영화 카드 클릭 시 ID 띄우기(검색 화면)
+				const movieCards = document.querySelectorAll(".movieCard");
+				movieCards.forEach(card => {
+					card.addEventListener("click", function () {
+						let movieCardId = this.getAttribute("data-id");
+						alert(`영화 ID : ${movieCardId}`);
+					})
+				})
 			});
 		};
 	};
 	// 검색 기능
 	search_area.addEventListener("submit", search);
-}
-
-
-// 검색 기능 함수
-let search = event => {
-	event.preventDefault();
-	const searchWord = searchInput.value.toLowerCase();
-	searchInput.value = "";
-
-	// tset
-	console.log(searchWord);
 }
 
 
