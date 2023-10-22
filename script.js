@@ -18,7 +18,7 @@ const options = {
 		Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOTU2NGFmZjVjMmQ2NTg5NjIzYmYwNTU3OWZkYTg3NCIsInN1YiI6IjY1MmYyOTYwZWE4NGM3MDEwYzFkYzYxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tllRINCGQK3ug_vl1CgEERHfUuoXmbgBZ8X-3hswvEE'
 	}
 };
-const API_URL = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+const API_URL = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
 
 
@@ -49,7 +49,7 @@ function fetchThen(data) {
 				<p>${_overview}</p>
 			</div>
 			<div class="movieGrade">
-				<p>Rating : ${_vote_average}</p>
+				<p>평점 : ${_vote_average}</p>
 			</div>
 		</div>`;
 
@@ -125,7 +125,7 @@ function fetchThen(data) {
 						<p>${overview}</p>
 					</div>
 					<div class="movieGrade">
-						<p>Rating : ${voteAverage}</p>
+						<p>평점 : ${voteAverage}</p>
 					</div>
 				</div>`;
 
