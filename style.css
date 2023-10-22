@@ -69,11 +69,11 @@ header {
     justify-content: center;
     align-items: center;
 
-    background-image: url("./asset/img/[그대들은\ 어떻게\ 살\ 것인가]\ 메인\ 예고편\ 0-22\ screenshot.jpg");
+    /* background-image: url("./asset/img/[그대들은\ 어떻게\ 살\ 것인가]\ 메인\ 예고편\ 0-22\ screenshot.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-}
+    }
 
 /* .bg_frame {
     position: absolute;

@@ -7,6 +7,7 @@ const movieCardList = document.querySelector(".movieCardList");
 const movieCard = document.querySelector(".movieCard");
 const movieImage = document.querySelector(".movieImage");
 const searchWord = searchInput.value.toLowerCase();
+const feature_home = document.querySelector(".feature_home");
 
 
 
@@ -18,9 +19,12 @@ const options = {
 		Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOTU2NGFmZjVjMmQ2NTg5NjIzYmYwNTU3OWZkYTg3NCIsInN1YiI6IjY1MmYyOTYwZWE4NGM3MDEwYzFkYzYxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tllRINCGQK3ug_vl1CgEERHfUuoXmbgBZ8X-3hswvEE'
 	}
 };
-const API_URL = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
+const API_TopRated = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
-
+const API_NowPlaying = "https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1";
+const API_Popular = "https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1";
+const API_Upcoming = "https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&page=1";
+const API_MovieImage = "https://api.themoviedb.org/3/movie/961268/images"
 
 
 // fetchThen 함수
@@ -55,6 +59,9 @@ function fetchThen(data) {
 
 		movieCardList.insertAdjacentHTML("beforeend", temp_html);
 	})
+
+	// feature_home 내용
+	feature(data)
 
 	// 영화 카드 클릭 시 ID 띄우기(초기 화면)
 	const movieCards = document.querySelectorAll(".movieCard");
@@ -148,12 +155,36 @@ function fetchThen(data) {
 
 
 
+// feature_home 함수
+function feature(data) {
+	// HTML 초기세팅
+	let _results = data['results'];
+	let random = Math.floor(Math.random() * _results.length);
+	let _id = _results[random]["id"];
+	let _title = _results[random]["title"];
+	let _overview = _results[random]["overview"];
+	let _poster_path = _results[random]["poster_path"];
+
+	feature_home.innerHTML = "";
+
+	let temp_html = `
+		<div class="movievisual_list">
+            <strong class="tit_feature">${_title}</strong>
+            <p class="txt_feature">${_overview}</p>
+        </div>`
+
+	feature_home.style.backgroundImage = `url("${IMAGE_BASE_URL}${_poster_path}")`
+
+	feature_home.insertAdjacentHTML("beforeend", temp_html);
+}
+
+
+
 // run
-fetch(API_URL, options)
+fetch(API_Popular, options)
 	.then(response => response.json())
 	// .then(response => console.log(response))
 	.then(data => fetchThen(data))
 	.catch(err => console.error(err));
-
 
 
