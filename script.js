@@ -8,6 +8,7 @@ const movieCard = document.querySelector(".movieCard");
 const movieImage = document.querySelector(".movieImage");
 const searchWord = searchInput.value.toLowerCase();
 const feature_home = document.querySelector(".feature_home");
+const feature_BG = document.querySelector(".feature_BG");
 
 
 
@@ -168,20 +169,23 @@ function feature(data) {
 	feature_home.innerHTML = "";
 
 	let temp_html = `
-		<div class="movievisual_list">
-            <strong class="tit_feature">${_title}</strong>
-            <p class="txt_feature">${_overview}</p>
-        </div>`
+	<div class="movievisual_list">
+	<strong class="tit_feature">${_title}</strong>
+	<p class="txt_feature">${_overview}</p>
+	<div class="movievisual_BG">
+		</div>
+	</div>
+	`
 
-	feature_home.style.backgroundImage = `url("${IMAGE_BASE_URL}${_poster_path}")`
-
+		feature_home.style.backgroundImage = `url("${IMAGE_BASE_URL}${_poster_path}")`
+	    
 	feature_home.insertAdjacentHTML("beforeend", temp_html);
 }
 
 
 
 // run
-fetch(API_Popular, options)
+fetch(API_TopRated, options)
 	.then(response => response.json())
 	// .then(response => console.log(response))
 	.then(data => fetchThen(data))
