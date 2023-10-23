@@ -49,6 +49,8 @@ header {
     margin-left: -20px;
     margin-top: 10px;
     align-items: center;
+
+    /* background-color: blanchedalmond; */
 }
 
 .orange_icon {
@@ -125,7 +127,6 @@ header {
     margin-left: -9999px;
     width: 11999px;
     height: 800px;
-    /* opacity: 0.3; */
     top: -35px;
     z-index: 1;
     
@@ -133,10 +134,12 @@ header {
 }
 
 .tit_feature {
-    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     position: absolute;
     overflow: hidden;
-    max-width: 700px;
+    max-width: 900px;
     font-weight: 600;
     font-size: 60px;
     margin-top: 170px;

@@ -9,6 +9,7 @@ const movieImage = document.querySelector(".movieImage");
 const searchWord = searchInput.value.toLowerCase();
 const feature_home = document.querySelector(".feature_home");
 const feature_BG = document.querySelector(".feature_BG");
+const languageBtn = document.querySelector(".languageBtn")
 
 
 
@@ -20,7 +21,7 @@ const options = {
 		Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOTU2NGFmZjVjMmQ2NTg5NjIzYmYwNTU3OWZkYTg3NCIsInN1YiI6IjY1MmYyOTYwZWE4NGM3MDEwYzFkYzYxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tllRINCGQK3ug_vl1CgEERHfUuoXmbgBZ8X-3hswvEE'
 	}
 };
-const API_TopRated = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
+let API_TopRated = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
 const API_NowPlaying = "https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1";
 const API_Popular = "https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1";
@@ -177,7 +178,7 @@ function feature(data) {
 	</div>
 	`
 
-		feature_home.style.backgroundImage = `url("${IMAGE_BASE_URL}${_poster_path}")`
+	feature_home.style.backgroundImage = `url("${IMAGE_BASE_URL}${_poster_path}")`
 	    
 	feature_home.insertAdjacentHTML("beforeend", temp_html);
 }
@@ -185,6 +186,12 @@ function feature(data) {
 
 
 // run
+
+// languageChange
+// function languageChange() {
+// 	API_TopRated = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
+// }
+
 fetch(API_TopRated, options)
 	.then(response => response.json())
 	// .then(response => console.log(response))
